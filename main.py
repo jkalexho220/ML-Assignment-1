@@ -51,7 +51,7 @@ log("Read done!")
 #classifier.plot_hyperparameter(esports_training_data.X, esports_training_data.y, esports_test_data.X, esports_test_data.y)
 
 #classifier.plot_learning_curve("KNN Text Data", text_training_data.X, text_training_data.y)
-#classifier.plot_learning_curve("KNN ESports", esports_training_data.X, esports_training_data.y)
+classifier.plot_learning_curve("KNN ESports", esports_training_data.X, esports_training_data.y)
 
 plt.show()
 
