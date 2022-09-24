@@ -37,6 +37,8 @@ text_test_data = TextReaderData('MNIST/emnist-balanced-test-images-idx3-ubyte',
 
 esports_training_data = ESportsData()
 
+esports_training_data.readData()
+
 esports_test_data = esports_training_data.partitionData(0.2)
 
 classifier = KNN()
@@ -49,7 +51,7 @@ log("Read done!")
 #classifier.plot_hyperparameter(esports_training_data.X, esports_training_data.y, esports_test_data.X, esports_test_data.y)
 
 #classifier.plot_learning_curve("KNN Text Data", text_training_data.X, text_training_data.y)
-classifier.plot_learning_curve("KNN ESports", esports_training_data.X, esports_training_data.y)
+#classifier.plot_learning_curve("KNN ESports", esports_training_data.X, esports_training_data.y)
 
 plt.show()
 
