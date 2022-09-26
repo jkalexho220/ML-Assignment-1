@@ -16,7 +16,7 @@ class MLAlgorithm:
 	def solve(self, X):
 		return self.model.predict(X)
 
-	def plot_hyperparameter(self, X, y, testX, testy):
+	def plot_hyperparameter(self, X, y, testX, testy, name):
 		pass
 
 	def plot_learning_curve(self,
@@ -95,7 +95,7 @@ class MLAlgorithm:
 	        (default: np.linspace(0.1, 1.0, 5))
 	    """
 	    if axes is None:
-	        _, axes = plt.subplots(2, 2, figsize=(20, 20))
+	        _, axes = plt.subplots(2, 2, figsize=(10, 10))
 
 	    axes[0,0].set_title(title)
 	    if ylim is not None:

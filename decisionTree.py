@@ -5,10 +5,10 @@ from sklearn.tree import DecisionTreeClassifier
 from MLAlgorithm import MLAlgorithm
 
 class DecisionTree(MLAlgorithm):
-	def __init__(self, criterion="gini", splitter="best"):
+	def __init__(self, criterion="gini", splitter="best", min_samples_leaf=15):
 		self.model = DecisionTreeClassifier(criterion=criterion, splitter=splitter, min_samples_leaf=10)
 
-	def plot_hyperparameter(self, X, y, testX, testy):
+	def plot_hyperparameter(self, X, y, testX, testy, name):
 		parameterMaximum = 30
 		fig, axes = plt.subplots(1, 1, figsize=(5, 5))
 		accuracy = np.zeros(parameterMaximum)
@@ -23,4 +23,4 @@ class DecisionTree(MLAlgorithm):
 		axes.plot(leafCount, accuracy, "o-")
 		axes.set_xlabel("Maximum Depth")
 		axes.set_ylabel("Accuracy")
-		axes.set_title("Maximum Depth for ESports Data")
+		axes.set_title("Maximum Depth for " + name + " Data")

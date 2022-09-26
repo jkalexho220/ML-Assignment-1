@@ -9,6 +9,9 @@ from esportsData import ESportsData
 from textReaderData import TextReaderData
 from decisionTree import DecisionTree
 from knn import KNN
+from boosting import Boost
+from neuralNetwork import NeuralNetwork
+from svm import SupportVectorMachine
 import sciplotter
 
 def log(info):
@@ -45,26 +48,31 @@ classifier = KNN()
 
 log("Read done!")
 
-#classifier.learn(text_training_data.X, text_training_data.y)
+#classifier.plot_hyperparameter(text_training_data.X, text_training_data.y, text_test_data.X, text_test_data.y, "Text")
+#classifier.plot_hyperparameter(esports_training_data.X, esports_training_data.y, esports_test_data.X, esports_test_data.y, "ESports")
 
-#classifier.plot_hyperparameter(text_training_data.X, text_training_data.y, text_test_data.X, text_test_data.y)
-#classifier.plot_hyperparameter(esports_training_data.X, esports_training_data.y, esports_test_data.X, esports_test_data.y)
-
-#classifier.plot_learning_curve("KNN Text Data", text_training_data.X, text_training_data.y)
-classifier.plot_learning_curve("KNN ESports", esports_training_data.X, esports_training_data.y)
+classifier.plot_learning_curve("KNN Text Data", text_training_data.X, text_training_data.y)
+#classifier.plot_learning_curve("Neural Network ESports", esports_training_data.X, esports_training_data.y)
 
 plt.show()
-
 
 """
 log("Training classifier...")
 start = time.monotonic()
-classifier.learn(training_data.X, training_data.y)
+classifier.learn(text_training_data.X, text_training_data.y)
 end = time.monotonic()
 log("Training done! Total elapsed: " + str(end - start))
 log("Testing classifier...")
 start = time.monotonic()
-testClassifier(classifier, test_data.X, test_data.y)
+results = classifier.solve(text_test_data.X)
 end = time.monotonic()
 log("Testing complete! Total elapsed: " + str(end - start))
+correct = text_test_data.y.shape[0]
+for i in range(text_test_data.y.shape[0]):
+	if results[i] != text_test_data.y[i]:
+		correct = correct - 1
+		print("Index: " + str(i) + " Expected " + str(text_test_data.y[i]) + " But algorithm chose " + str(results[i]))
+
+print("Accuracy: " + str(correct / text_test_data.y.shape[0]))
+print("Total: " + str(text_test_data.y.shape[0]))
 """

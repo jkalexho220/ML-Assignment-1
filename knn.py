@@ -5,10 +5,10 @@ from sklearn.neighbors import KNeighborsClassifier
 from MLAlgorithm import MLAlgorithm
 
 class KNN(MLAlgorithm):
-	def __init__(self, n_neighbors=10):
-		self.model = KNeighborsClassifier(weights="distance", n_neighbors=n_neighbors)
+	def __init__(self, n_neighbors=5):
+		self.model = KNeighborsClassifier(n_neighbors=n_neighbors)
 
-	def plot_hyperparameter(self, X, y, testX, testy):
+	def plot_hyperparameter(self, X, y, testX, testy, name):
 		parameterMaximum = 30
 		fig, axes = plt.subplots(1, 1, figsize=(5, 5))
 		accuracy = np.zeros(parameterMaximum)
@@ -22,4 +22,4 @@ class KNN(MLAlgorithm):
 		axes.plot(leafCount, accuracy, "o-")
 		axes.set_xlabel("Number of Neighbors")
 		axes.set_ylabel("Accuracy")
-		axes.set_title("KNN for Text Data")
+		axes.set_title("KNN for " + name + " Data")

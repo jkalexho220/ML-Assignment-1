@@ -36,13 +36,13 @@ READ_CHAMPION = 17
 READ_BANS = 18
 READ_PLAYER_NAME = 13
 
-TEAM_1_PICK = 2
-TEAM_1_BAN  = -1
-TEAM_2_PICK = -2
-TEAM_2_BAN  = 1
+TEAM_1_PICK = 9
+TEAM_1_BAN  = 1
+TEAM_2_PICK = 7
+TEAM_2_BAN  = 2
 
-TEAM_1 = 1
-TEAM_2 = -1
+TEAM_1 = 20
+TEAM_2 = 15
 
 npStr = np.dtype(('U', 32))
 
@@ -86,6 +86,7 @@ class ESportsData:
 		global DATA_TEAM_NAMES
 		for f in self.files:
 			self.gatherData(f)
+		print(self.matchCount)
 		self.esportsDataLength = len(self.teams) + len(self.champions) + 1
 		self.X = np.zeros([1 + self.matchCount // 12, self.esportsDataLength], dtype=np.int8)
 		self.matchCount = 0
@@ -98,12 +99,14 @@ class ESportsData:
 		for f in self.files:
 			self.readDataFile(f)
 		# validate that data is working
+		"""
 		for i in range(len(self.teams)):
 			if self.X[0,DATA_TEAM_NAMES + i] != 0:
 				print(self.teams[i])
 		for i in range(len(self.champions)):
 			if self.X[0,DATA_CHAMP_NAMES + i] != 0:
 				print(self.champions[i] + str(self.X[0,DATA_CHAMP_NAMES + i]))
+		"""
 
 	def gatherData(self, filename):
 		with open(filename, newline='', encoding='UTF-8') as csvfile:

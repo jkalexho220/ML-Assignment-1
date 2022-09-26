@@ -25,21 +25,21 @@ class TextReaderData:
 #X, y = loadlocal_mnist(images_path='MNIST/emnist-balanced-train-images-idx3-ubyte', labels_path='MNIST/emnist-balanced-train-labels-idx1-ubyte')
 
 
-
 """
-example = 24
+my_data = TextReaderData('MNIST/emnist-balanced-train-images-idx3-ubyte',
+	'MNIST/emnist-balanced-train-labels-idx1-ubyte')
+example = 31
 
-skip = 3
-print('Dimensions: %s x %s' % (X.shape[0], X.shape[1]))
+skip = 5
+print('Dimensions: %s x %s' % (my_data.X.shape[0], my_data.X.shape[1]))
 
-for i in range(len(y)):
-	if y[i] == example:
+for i in range(len(my_data.y)):
+	if my_data.y[i] == example:
 		skip = skip - 1
 		if skip < 0:
-			print('\nArray', X[i])
-			print('\nClassification', y[i])
+			print('\nClassification', my_data.y[i])
 			sys.stdout.flush()
-			img = Image.fromarray(X[i].reshape(28, 28), 'L')
+			img = Image.fromarray(my_data.X[i].reshape(28, 28).astype('uint8'), 'L')
 			img.show()
 			break
 """
